@@ -34,6 +34,10 @@ const NavBar = (props) => {
                 type: "latest",
               },
             }}
+            onClick={() => {
+              console.log("clicked latest link");
+              props.setPathType("latest");
+            }}
           >
             <div>Latest Movies</div>
           </Link>

@@ -17,7 +17,6 @@ class App extends React.Component {
     pathType: null,
   };
   getMovieData = async (value) => {
-    debugger;
     let data = null;
     if (this.state.pathType) {
       console.log("in getMovieData: pathType", this.state.pathType);
@@ -38,9 +37,21 @@ class App extends React.Component {
           <NavBar setPathType={this.setPathType} />
           <Route path="/" exact component={HomePage} />
           <Route path="/revenue/page/:id" component={CreateListOfMovies} />
-          <Route path="/latest/page/:id" component={CreateListOfMovies} />
-          <Route path="/top/page/:id" component={CreateListOfMovies} />
-          <Route path="/moviedetails/:id" component={CreateMovieDetails} />
+          <Route
+            path="/latest/page/:id"
+            component={CreateListOfMovies}
+            data={this.state.movieData}
+          />
+          <Route
+            path="/top/page/:id"
+            component={CreateListOfMovies}
+            data={this.state.movieData}
+          />
+          <Route
+            path="/moviedetails/:id"
+            component={CreateMovieDetails}
+            data={this.state.movieData}
+          />
           <Route path="/search/:query/page/:id">
             <CreateListOfMovies data={this.state.movieData} />
           </Route>
